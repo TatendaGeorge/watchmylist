@@ -24,7 +24,7 @@
     "mongoose": "^6.10.1",
     "nodemailer": "^6.9.7",
     "p-queue": "^7.4.1",
-    "puppeteer": "^21.5.0"
+    "puppeteer": "^19.7.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
