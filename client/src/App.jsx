@@ -7,7 +7,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 //import Dashboard from "./pages/dashboard";
 const Overview = lazy(() => import("./pages/overview"));
 const Calendar = lazy(() => import("./pages/calendar"));
-const PatientList = lazy(() => import("./pages/patient-list"));
+// const PatientList = lazy(() => import("./pages/patient-list"));
 const Messages = lazy(() => import("./pages/messages"));
 const PaymentInformation = lazy(() => import("./pages/payment-information"));
 const ErrorPage = lazy(() => import("./pages/404"));
@@ -57,7 +57,7 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route path="overview" element={<Overview routing="path" path="overview"/>} />
               <Route path="calendar" element={<Calendar />} />
-              <Route path="patient-list" element={<PatientList />} />
+              {/* <Route path="patient-list" element={<PatientList />} /> */}
               <Route path="messages" element={<Messages />} />
               <Route path="payment-information" element={<PaymentInformation />} />
               <Route path="trending" element={ <Suspense fallback={<Loading />}> <Trending /> </Suspense> } />

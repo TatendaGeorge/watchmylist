@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-//import reactRefresh from "@vitejs/plugin-react-refresh";
+// import reactRefresh from "@vitejs/plugin-react-refresh";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import rollupReplace from "@rollup/plugin-replace";
@@ -24,6 +24,17 @@ export default defineConfig({
       },
     }),
     react(),
-    //reactRefresh(),
+    // reactRefresh(),
   ],
+  build: {
+    chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code === "MODULE_LEVEL_DIRECTIVE") {
+          return;
+        }
+        warn(warning);
+      },
+    },
+  },
 });

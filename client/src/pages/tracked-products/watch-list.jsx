@@ -1,7 +1,5 @@
 import React, { useMemo, useEffect, useState } from "react";
-import Chart from "react-apexcharts";
-import Dropdown from "@/components/ui/Dropdown";
-import { Menu } from "@headlessui/react";
+import { Link } from "react-router-dom";
 import Icon from "@/components/ui/Icon";
 import Tooltip from "@/components/ui/Tooltip";
 import {
@@ -76,27 +74,6 @@ const options = {
   },
 };
 
-const series = [
-  {
-    data: [800, 600, 1000, 800, 600, 1000, 800, 900],
-  },
-];
-
-const actions = [
-  {
-    name: "view",
-    icon: "heroicons-outline:eye",
-  },
-  {
-    name: "edit",
-    icon: "heroicons:pencil-square",
-  },
-  {
-    name: "delete",
-    icon: "heroicons-outline:trash",
-  },
-];
-
 const COLUMNS = [
   {
     Header: "Product",
@@ -143,12 +120,24 @@ const COLUMNS = [
     accessor: "action",
     Cell: (row) => (
       <div className="flex space-x-3 rtl:space-x-reverse">
-        <Tooltip content="View Product" placement="top" arrow animation="shift-away">
-          <button className="action-btn" type="button">
-            <Icon icon="heroicons:eye" />
-          </button>
+        <Tooltip
+          content="View Product"
+          placement="top"
+          arrow
+          animation="shift-away"
+        >
+          <Link to={{ pathname: "/product/" + row.value }} target="_blank">
+            <button className="action-btn" type="button">
+              <Icon icon="heroicons:eye" />
+            </button>
+          </Link>
         </Tooltip>
-        <Tooltip content="Edit Tracking Options" placement="top" arrow animation="shift-away">
+        <Tooltip
+          content="Edit Tracking Options"
+          placement="top"
+          arrow
+          animation="shift-away"
+        >
           <button className="action-btn" type="button">
             <Icon icon="heroicons:pencil-square" />
           </button>
@@ -190,7 +179,7 @@ const WatchList = ({ products }) => {
         status: anyTrackingOptionTrue ? "progress" : "complete",
         trackers: product.users.find((userObj) => userObj.userId === userId),
         chart: product.priceHistory,
-        action: "actions",
+        action: product._id,
       };
     });
     return product;
@@ -237,7 +226,7 @@ const WatchList = ({ products }) => {
     prepareRow,
   } = tableInstance;
 
-  const { globalFilter, pageIndex, pageSize } = state
+  const { globalFilter, pageIndex, pageSize } = state;
 
   return (
     <div>

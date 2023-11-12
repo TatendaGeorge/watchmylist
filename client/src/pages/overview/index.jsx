@@ -12,7 +12,7 @@ import {
   scrapeAndStoreProduct,
   getRecentProducts,
   updateProductDetails,
-} from "@/services/authService";
+} from "@/services/productService";
 
 const schema = yup
   .object({

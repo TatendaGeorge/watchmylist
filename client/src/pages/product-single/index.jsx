@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Stepline from "./Stepline";
-import { getProduct, addUserEmailToProduct } from "@/services/authService";
+import { getProduct, addUserEmailToProduct } from "@/services/productService";
 import { useUser } from "@clerk/clerk-react";
 import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";

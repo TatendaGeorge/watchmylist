@@ -3,7 +3,7 @@ import Breadcrumbs from "@/components/ui/breadcrumbs";
 import ProductCard from "@/components/ui/ProductCard";
 import Button from "@/components/ui/Button";
 import Loading from "@/components/Loading";
-import { getAllProducts } from "@/services/authService";
+import { getAllProducts } from "@/services/productService";
 
 const Trending = () => {
   const [products, setProducts] = useState([]);
