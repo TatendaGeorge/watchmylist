@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Breadcrumbs from "@/components/ui/breadcrumbs";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ProductCard from "@/components/ui/ProductCard";
 import Button from "@/components/ui/Button";
 import Loading from "@/components/Loading";
