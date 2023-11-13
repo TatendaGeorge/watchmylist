@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/v1';
+const API_URL = 'https://watch-my-list.onrender.com/api/v1';
 
 export const getAllProducts = async (limit, skip) => {
     try {
