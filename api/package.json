@@ -7,6 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node app.js",
+    "build": "npm run build",
     "dev": "nodemon app.js"
   },
   "keywords": [],
@@ -24,7 +25,8 @@
     "mongoose": "^6.10.1",
     "nodemailer": "^6.9.7",
     "p-queue": "^7.4.1",
-    "puppeteer": "^19.7.2"
+    "puppeteer": "^12.0.0",
+    "puppeteer-core": "^21.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

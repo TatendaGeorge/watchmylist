@@ -1,12 +1,15 @@
 import * as cheerio from 'cheerio';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
 import { extractCurrency, extractDescription, extractPrice } from './utils.js';
 
 export default async function scrapeProduct(url) {
     if(!url) return;
   
     try {
-      const browser = await puppeteer.launch({headless: true});
+      const browser = await puppeteer.launch({
+        headless: true,
+        executablePath: '/opt/render/.cache/puppeteer',
+      });
       const page = await browser.newPage();
       await page.goto(url);
       const html = await page.content();
