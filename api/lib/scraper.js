@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import puppeteer from 'puppeteer-core';
+import puppeteer from 'puppeteer';
 import { extractCurrency, extractDescription, extractPrice } from './utils.js';
 
 export default async function scrapeProduct(url) {
