@@ -7,7 +7,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node app.js",
-    "build": "npm run build",
     "dev": "nodemon app.js"
   },
   "keywords": [],
