@@ -15,19 +15,19 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
-    "cloudinary": "^1.36.4",
+    "cloudinary": "^1.41.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "deepai": "^1.0.23",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.10.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.0",
     "nodemailer": "^6.9.7",
     "p-queue": "^7.4.1",
-    "puppeteer": "^19.7.2"
+    "puppeteer": "^21.5.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^3.0.1"
   }
 }
