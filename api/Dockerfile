@@ -8,4 +8,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+
+# Install nodemon globally
+RUN npm install -g nodemon
+
 CMD [ "nodemon", "app.js" ]
