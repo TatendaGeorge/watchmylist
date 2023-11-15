@@ -15,7 +15,7 @@ export default async function scrapeProduct(url) {
       "--single-process",
       "--no-zygote",
     ],
-    headless: true,
+    headless: false,
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
@@ -105,6 +105,7 @@ export default async function scrapeProduct(url) {
 
     return data;
   } catch (error) {
+    console.error("Error in Puppeteer script:", error);
     console.log(error);
   } finally {
     await browser.close();
