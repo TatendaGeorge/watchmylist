@@ -7,7 +7,7 @@ dotenv.config();
 
 export default async function scrapeProduct(url) {
   if (!url) return;
-
+  console.log("Scraping logic step 1");
   const browser = await puppeteer.launch({
     args: [
       "--disable-setuid-sandbox",
@@ -15,7 +15,7 @@ export default async function scrapeProduct(url) {
       "--single-process",
       "--no-zygote",
     ],
-    headless: false,
+    headless: true,
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
