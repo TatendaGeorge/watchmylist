@@ -9,7 +9,4 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
-# Install nodemon globally
-RUN npm install -g nodemon
-
-CMD [ "nodemon", "app.js" ]
+CMD [ "npx", "nodemon", "app.js" ]
