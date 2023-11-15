@@ -1,9 +1,11 @@
 FROM ghcr.io/puppeteer/puppeteer:19.7.2
 
-USER root
-
+# Install xvfb
 RUN apt-get update && \
-    apt-get install -y libx11-xcb1 libxcb-dri3-0 libdrm-dev libgbm-dev libxshmfence-dev
+    apt-get install -y xvfb
+
+# Set up display
+ENV DISPLAY=:99
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
@@ -14,4 +16,5 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
-CMD [ "npx", "nodemon", "app.js" ]
+# Start xvfb and run the application
+CMD xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" npx nodemon app.js
