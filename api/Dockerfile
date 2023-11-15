@@ -1,8 +1,12 @@
 FROM ghcr.io/puppeteer/puppeteer:19.7.2
 
+USER root
+
 # Install xvfb
 RUN apt-get update && \
     apt-get install -y xvfb
+
+USER node
 
 # Set up display
 ENV DISPLAY=:99
