@@ -23,13 +23,17 @@ export default async function scrapeProduct(url) {
   });
 
   try {
+    console.log("here 1");
     const page = await browser.newPage();
+    console.log("here 2");
     await page.goto(url);
+    console.log("here 3");
     const html = await page.content();
+    console.log("here 4");
 
     // Fetch the product page
     const $ = cheerio.load(html);
-
+    console.log("here 5");
     // // Extract the product title
     const title = $(".product-title h1").text().trim();
     const currentPrice = extractPrice($('[data-ref="buybox-price-main"]'));
