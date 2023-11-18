@@ -12,19 +12,19 @@ export default async function scrapeProduct(url) {
   console.log(process.env.NODE_ENV);
   console.log(puppeteer.executablePath());
   const browser = await puppeteer.launch({
-    // args: [
-    //   "--disable-setuid-sandbox",
-    //   "--no-sandbox",
-    //   "--single-process",
-    //   "--no-zygote",
-    // ],
+    args: [
+      "--disable-setuid-sandbox",
+      "--no-sandbox",
+      "--single-process",
+      "--no-zygote",
+    ],
     headless: "new",
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
         : puppeteer.executablePath(),
   });
-
+  console.log("Scraping logic step 2");
   try {
     console.log("here 1");
     const page = await browser.newPage();
