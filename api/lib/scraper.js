@@ -9,6 +9,7 @@ export default async function scrapeProduct(url) {
   if (!url) return;
   console.log("Scraping logic step 1");
   console.log(process.env.PUPPETEER_EXECUTABLE_PATH);
+  console.log(process.env.NODE_ENV);
   const browser = await puppeteer.launch({
     args: [
       "--disable-setuid-sandbox",
