@@ -1,5 +1,4 @@
-FROM ghcr.io/puppeteer/puppeteer:latest # pulls the latest
-FROM ghcr.io/puppeteer/puppeteer:19.7.2 # pulls the image that contains Puppeteer v16.1.0
+FROM ghcr.io/puppeteer/puppeteer:19.7.2
 
 USER root
 
@@ -12,7 +11,7 @@ USER node
 # Set up display
 ENV DISPLAY=:99
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 
 WORKDIR /usr/src/app
