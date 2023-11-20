@@ -1,4 +1,5 @@
-FROM ghcr.io/puppeteer/puppeteer:19.7.2
+docker pull ghcr.io/puppeteer/puppeteer:latest # pulls the latest
+docker pull ghcr.io/puppeteer/puppeteer:19.7.2 # pulls the image that contains Puppeteer v16.1.0
 
 USER root
 

@@ -7,37 +7,28 @@ dotenv.config();
 
 export default async function scrapeProduct(url) {
   if (!url) return;
-  console.log("Scraping logic step 1");
-  console.log(process.env.PUPPETEER_EXECUTABLE_PATH);
-  console.log(process.env.NODE_ENV);
-  console.log(puppeteer.executablePath());
+  
   const browser = await puppeteer.launch({
-    headless: false,
     args: [
       "--disable-setuid-sandbox",
       "--no-sandbox",
       "--single-process",
       "--no-zygote",
     ],
-    // headless: "new",
+    headless: "new",
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
         : puppeteer.executablePath(),
   });
-  console.log("Scraping logic step 2");
+  
   try {
-    console.log("here 1");
     const page = await browser.newPage();
-    console.log("here 2");
     await page.goto(url);
-    console.log("here 3");
     const html = await page.content();
-    console.log("here 4");
 
     // Fetch the product page
     const $ = cheerio.load(html);
-    console.log("here 5");
     // // Extract the product title
     const title = $(".product-title h1").text().trim();
     const currentPrice = extractPrice($('[data-ref="buybox-price-main"]'));
