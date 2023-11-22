@@ -16,7 +16,10 @@ export default async function scrapeProduct(url) {
       "--no-zygote",
     ],
     headless: "new",
-    executablePath: 'google-chrome-stable',
+    executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath(),
   });
   
   try {
