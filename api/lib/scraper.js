@@ -7,12 +7,15 @@ dotenv.config();
 
 export default async function scrapeProduct(url) {
   if (!url) return;
-  console.log(puppeteer.executablePath());
-  console.log(process.env.PUPPETEER_EXECUTABLE_PATH);
 
   const browser = await puppeteer.launch({
-    args: ["--no-sandbox", "--disable-gpu"],
-    headless: "new",
+    args: [
+      "--disable-setuid-sandbox",
+      "--no-sandbox",
+      "--single-process",
+      "--no-zygote",
+    ],
+    headless: true,
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
@@ -32,10 +35,9 @@ export default async function scrapeProduct(url) {
     //   // Add any other headers you want to mimic here
     // });
 
-    await page.goto(url, { timeout: 60000 });
+    await page.goto(url);
     const html = await page.content();
 
-    console.log(html);
     // Fetch the product page
     const $ = cheerio.load(html);
     // // Extract the product title
