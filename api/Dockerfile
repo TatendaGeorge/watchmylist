@@ -24,8 +24,8 @@ RUN npm install
 # Install nodemon globally
 RUN npm install -g nodemon
 
-# Copy handler function and tsconfig
-COPY app.js ./
+# Copy application files
+COPY . .
 
 # Expose app
 EXPOSE 3000
