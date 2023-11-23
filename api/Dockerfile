@@ -16,9 +16,6 @@ ENV DISPLAY=:99
 # Set up entry point to start xvfb before running commands
 ENTRYPOINT ["sh", "-c", "Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset & exec \"$@\"", "--"]
 
-# Clear npm cache
-RUN npm cache clean --force
-
 # If running Docker >= 1.13.0 use docker run's --init arg to reap zombie processes, otherwise
 # uncomment the following lines to have `dumb-init` as PID 1
 # ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_x86_64 /usr/local/bin/dumb-init
@@ -31,8 +28,9 @@ RUN npm cache clean --force
 # ENV PUPPETEER_SKIP_DOWNLOAD true
 
 # Install puppeteer so it's available in the container.
-RUN npm init -y &&  \
-    npm i puppeteer \
+RUN npm cache clean --force && \
+    npm init -y && \
+    npm i puppeteer && \
     # Add user so we don't need --no-sandbox.
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
     && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
