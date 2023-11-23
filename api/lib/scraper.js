@@ -37,6 +37,7 @@ export default async function scrapeProduct(url) {
 
     await page.goto(url);
     const html = await page.content();
+    console.log(html);
 
     // Fetch the product page
     const $ = cheerio.load(html);
