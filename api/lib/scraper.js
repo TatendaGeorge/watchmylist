@@ -21,18 +21,18 @@ export default async function scrapeProduct(url) {
 
   try {
     const page = await browser.newPage();
-    // Set user agent
-    await page.setUserAgent(
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.99 Safari/537.36"
-    );
+    // // Set user agent
+    // await page.setUserAgent(
+    //   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.99 Safari/537.36"
+    // );
 
-    // Set extra HTTP headers
-    await page.setExtraHTTPHeaders({
-      "Accept-Language": "en-US,en;q=0.9", // Adjust based on preferred languages
-      // Add any other headers you want to mimic here
-    });
+    // // Set extra HTTP headers
+    // await page.setExtraHTTPHeaders({
+    //   "Accept-Language": "en-US,en;q=0.9", // Adjust based on preferred languages
+    //   // Add any other headers you want to mimic here
+    // });
 
-    await page.goto('https://superbalist.com/men/tops/t-shirts-vests/la-logo-graphic-tee-black/1081751', { timeout: 60000 });
+    await page.goto(url, { timeout: 60000 });
     const html = await page.content();
 
     console.log(html);
