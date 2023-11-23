@@ -1,4 +1,4 @@
-FROM node:14-slim
+FROM node:16-slim
 
 # Install latest chrome dev package and fonts to support major charsets
 RUN apt-get update \
