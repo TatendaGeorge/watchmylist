@@ -7,15 +7,15 @@ dotenv.config();
 
 export default async function scrapeProduct(url) {
   if (!url) return;
+  console.log(puppeteer.executablePath());
+  console.log(process.env.PUPPETEER_EXECUTABLE_PATH);
   
   const browser = await puppeteer.launch({
     args: [
-      "--disable-setuid-sandbox",
       "--no-sandbox",
-      "--single-process",
-      "--no-zygote",
-    ],
-    headless: "new",
+      "--disable-gpu",
+  ],
+    headless: true,
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
