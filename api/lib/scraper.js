@@ -32,7 +32,7 @@ export default async function scrapeProduct(url) {
       // Add any other headers you want to mimic here
     });
 
-    await page.goto(url, { timeout: 60000 });
+    await page.goto('https://superbalist.com/men/tops/t-shirts-vests/la-logo-graphic-tee-black/1081751', { timeout: 60000 });
     const html = await page.content();
 
     console.log(html);
