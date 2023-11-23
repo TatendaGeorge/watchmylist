@@ -25,7 +25,7 @@ RUN npm install
 RUN npm install -g nodemon
 
 # Copy handler function and tsconfig
-COPY server.js ./
+COPY app.js ./
 
 # Expose app
 EXPOSE 3000
