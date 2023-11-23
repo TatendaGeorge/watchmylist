@@ -12,7 +12,7 @@ export default async function scrapeProduct(url) {
 
   const browser = await puppeteer.launch({
     args: ["--no-sandbox", "--disable-gpu"],
-    headless: true,
+    headless: "new",
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
@@ -32,7 +32,7 @@ export default async function scrapeProduct(url) {
       // Add any other headers you want to mimic here
     });
 
-    await page.goto(url);
+    await page.goto(url, { timeout: 60000 });
     const html = await page.content();
 
     console.log(html);
