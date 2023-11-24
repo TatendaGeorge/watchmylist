@@ -8,9 +8,8 @@ dotenv.config();
 export default async function scrapeProduct(url) {
   if (!url) return;
 
-  const browser = await puppeteer.launch({
+  const browser = await puppeteer.connect({
     browserWSEndpoint: `wss://${process.env.AUTH}@brd.superproxy.io:9222`,
-    executablePath: `wss://${process.env.AUTH}@brd.superproxy.io:9222`
     // args: [
     //   "--disable-setuid-sandbox",
     //   "--no-sandbox",
