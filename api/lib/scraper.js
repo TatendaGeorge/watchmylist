@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import { extractCurrency, extractDescription, extractPrice } from "./utils.js";
 import * as dotenv from "dotenv";
 
@@ -9,23 +9,24 @@ export default async function scrapeProduct(url) {
   if (!url) return;
 
   const browser = await puppeteer.launch({
-    args: [
-      "--disable-setuid-sandbox",
-      "--no-sandbox",
-      "--single-process",
-      "--no-zygote",
-    ],
-    headless: true,
-    executablePath:
-      process.env.NODE_ENV === "production"
-        ? process.env.PUPPETEER_EXECUTABLE_PATH
-        : puppeteer.executablePath(),
+    browserWSEndpoint: `wss://${process.env.AUTH}@brd.superproxy.io:9222`,
+    // args: [
+    //   "--disable-setuid-sandbox",
+    //   "--no-sandbox",
+    //   "--single-process",
+    //   "--no-zygote",
+    // ],
+    // headless: true,
+    // executablePath:
+    //   process.env.NODE_ENV === "production"
+    //     ? process.env.PUPPETEER_EXECUTABLE_PATH
+    //     : puppeteer.executablePath(),
   });
 
   try {
     const page = await browser.newPage();
     // Set user agent
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/110.0')
+    // await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/110.0')
 
     await page.goto(url);
     const html = await page.content();
