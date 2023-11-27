@@ -24,6 +24,7 @@ export default async function scrapeProduct(url) {
 
     // Fetch the product page
     const $ = cheerio.load(html);
+    console.log($);
     // // Extract the product title
     const title = $(".product-title h1").text().trim();
     const currentPrice = extractPrice($('[data-ref="buybox-price-main"]'));
